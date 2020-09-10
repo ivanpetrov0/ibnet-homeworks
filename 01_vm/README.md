@@ -38,7 +38,7 @@
 
 ![](pic/storage.png)
 
-2\. Нажмите на кнопку Add Disk (1) и выберите скачанный файл ([ext.vhd](assets/ext.vhd) для Linux, [ntfs.vhd](assets/ntfs.vhd) для Windows)
+2\. Нажмите на кнопку Add Disk (1) и выберите скачанный файл ([disk.vhd](assets/disk.vhd) для Linux)
 
 ![](pic/add-vdi.png)
 
