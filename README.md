@@ -14,7 +14,7 @@
 
 2.2. [x] [IPv4 и IPv6](05_ip)
 
-2.3. [ ] [TCP и UDP](06_tcpudp)
+2.3. [x] [TCP и UDP](06_tcpudp)
 
 ## Блок 3. VPN и Wi-Fi
 
