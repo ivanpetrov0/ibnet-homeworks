@@ -2,6 +2,10 @@
 
 В качестве результата пришлите ответы на вопросы в личном кабинете студента на сайте [netology.ru](https://netology.ru).
 
+Материалы с лекции:
+1. [WebVPN](./assets/webvpn.pkt)
+1. [Site-to-Site](./assets/site2site.pkt)
+
 ## OpenVPN
 
 В рамках данной лабораторной работы мы попрактикуемся в использовании самого популярного Open Source решения для организации VPN - [OpenVPN](https://openvpn.net/community-downloads/).
