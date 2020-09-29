@@ -18,7 +18,7 @@
 
 ## Блок 3. VPN и Wi-Fi
 
-3.1. [ ] [VPN и IPSec](07_organization)
+3.1. [x] [VPN и IPSec](07_organization)
 
 3.2. [ ] [Wi-Fi](08_wifi)
 
