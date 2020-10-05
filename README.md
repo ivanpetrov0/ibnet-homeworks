@@ -20,7 +20,7 @@
 
 3.1. [x] [VPN и IPSec](07_organization)
 
-3.2. [ ] [Wi-Fi](08_wifi)
+3.2. [x] [Wi-Fi](08_wifi)
 
 ## Блок 4. Работа сети Интернет
 
