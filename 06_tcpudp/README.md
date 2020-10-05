@@ -12,6 +12,12 @@ Firewall (межсетевой экран) - это устройство или 
 
 Для выполнения этого ДЗ потребуются две виртуальные машины: Ubuntu и Kali
 
+Для установки на машине с Kali выполните следующие команды:
+```shell script
+sudo apt update
+sudo apt install telnet
+```
+
 Запустим виртуальную машину Ubuntu и установим следующие программы:
 * nginx - веб-сервер (возможность публикации веб-страниц)
 * openssh-server - сервер ssh (Secure Shell - возможность управления с использованием интерпретатора команд на удалённом сервере)
@@ -20,7 +26,7 @@ Firewall (межсетевой экран) - это устройство или 
 Для установки на машине с Ubuntu выполните следующие команды:
 ```shell script
 sudo apt update
-sudo apt install nginx openssh-server vsftpd
+sudo apt install nginx openssh-server vsftpd telnet
 ```
 
 Установленные приложения запустятся после установки сразу в виде сервисов и откроют следующие порты:
@@ -58,12 +64,6 @@ sudo apt install nginx openssh-server vsftpd
 <summary>О программе telnet</summary>
 
 Программа telnet является одним из самых простых средств проверки доступности сервисов на удаленном хосте.
-
-Для установки введите следующую команду:
-```shell script
-sudo apt update
-sudo apt install telnet
-```
 
 Проверка производится следующим образом:
 
