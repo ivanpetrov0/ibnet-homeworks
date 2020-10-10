@@ -222,7 +222,7 @@ server {
 
 ### HTTP2 
 
-Для включения HTTP2 достаточно в конфигурацию (на Ubuntu файл /etc/nginx/etc/sites-default/default) включить `http2`:
+Для включения HTTP2 достаточно в конфигурацию (на Ubuntu файл `/etc/nginx/sites-default/default`) включить `http2`:
 
 ```text
 server {
