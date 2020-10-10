@@ -60,7 +60,7 @@ cd certs
 
 Далее сгенерируем самоподписанный сертификат с помощью OpenSSL:
 ```shell script
-sudo openssl req -newkey rsa:2048 -nodes -x509 -days 365 -keyout key.pem -out certificate.pem -subj "/C=RU/ST=Moscow/L=Moscow/O=Security/OU=Security/CN=netology.local"
+sudo openssl req -newkey rsa:2048 -nodes -x509 -days 365 -keyout key.pem -out certificate.pem -subj "/C=RU/ST=Moscow/L=Moscow/O=Security/OU=Security/CN=netology.local" -addext "subjectAltName=DNS:netology.local"
 ```
 
 Что это команда делает: генерирует сертификат и ключ с заполненными данными (в данном случае на домен netology.local).
