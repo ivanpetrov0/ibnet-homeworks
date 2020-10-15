@@ -125,8 +125,8 @@ server {
     return 301 https://$host$request_uri;
   }
 
-  listen 80 default_server;
-  listen [::]:80 default_server;
+  listen 80;
+  listen [::]:80;
 
   return 404;
 }
@@ -189,8 +189,8 @@ server {
     return 301 https://$host$request_uri;
   }
 
-  listen 80 default_server;
-  listen [::]:80 default_server;
+  listen 80;
+  listen [::]:80;
 
   return 404;
 }
