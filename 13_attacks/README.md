@@ -119,7 +119,8 @@ chmod +x ./server-x64.bin
 
 Открываете порты на firewall'е с 9000 по 9999:
 ```shell script
-sudo ufw allow 9000:9999
+sudo ufw allow 9000:9999/tcp
+sudo ufw allow 9000:9999/udp
 ```
 
 ### На машине с Kali
