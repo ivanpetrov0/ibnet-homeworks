@@ -100,8 +100,10 @@ sudo suricata -c /etc/suricata/suricata.yaml -i enp0s8
 7\. В другой консоли запускаете просмотр лога:
 
 ```shell script
-sudo tail /var/log/suricata/fast.log
+sudo tail -f /var/log/suricata/fast.log
 ```
+
+Полностью посмотреть лог вы можете с помощью уже знакомых вам инструментов, например, `sudo mcedit /var/log/suricata/fast.log` (хотя более правильным будет просмотр с помощью специальных pager'ов `sudo less /var/log/suricata/fast.log`, выход из которых осуществляется с помощью клавиши `q`).
 
 #### Kali
 
