@@ -29,6 +29,8 @@
 
 `traceroute yandex.ru` (Linux/Mac), возможно её потребуется установить через `sudo apt install traceroute` (в Ubuntu/Kali) или `brew install traceroute` (Mac)
 
+Примечание: если внутри VirtualBox команда `traceroute yandex.ru` не даёт результатов (вы видите одни звёздочки), то запустите в формате: `sudo traceroute -I yandex.ru` (I - i большое, а не l).
+
 5\. Дождитесь завершения работы программы и остановите сбор пакетов в Wireshark
 
 6\. Посмотрите ваш частный IP-адрес (по данным Wireshark). Для этого вам нужно открыть любой пакет и изучить поля "Internet Protocol Version 4" `Src` и `Dst`
