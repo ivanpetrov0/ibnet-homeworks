@@ -51,9 +51,7 @@ sudo apt install nginx
 
 7\. Отключаете fail2ban с помощью команды `sudo systemctl stop fail2ban` (чтобы отключить полностью и он не запускался после перезагрузки машины, нужно дополнительно ввести команду `sudo systemctl disable fail2ban`)
 
-#### Kali
-
-1\. Устанавливаете suricata с помощью следующих команд:
+8\. Устанавливаете suricata с помощью следующих команд:
 
 ```shell script
 sudo apt install software-properties-common
@@ -65,23 +63,23 @@ sudo suricata-update
 
 Примечание*: suricata-update скачивает набор правил от [ET Labs](https://rules.emergingthreats.net).
 
-2\. Проверяете, что сервис запустился после установки
+9\. Проверяете, что сервис запустился после установки
 
 ```shell script
 sudo systemctl status suricata
 ```
 
-3\. Меняете значение `EXTERNAL_NET` в `/etc/suricata/suricata.yaml` на `"any"`:
+10\. Меняете значение `EXTERNAL_NET` в `/etc/suricata/suricata.yaml` на `"any"`:
 
 ![](pic/suricata.png)
 
-4\. Перезапускаете suricata:
+11\. Перезапускаете suricata:
 
 ```shell script
 sudo systemctl restart suricata
 ```
 
-5\. Смотрим доступные сетевые интерфейсы:
+12\. Смотрим доступные сетевые интерфейсы:
 
 ```shell script
 ip addr show
@@ -91,13 +89,13 @@ ip addr show
 
 ![](pic/ipaddr.png)
 
-6\. Запускаем suricata на выбранном интерфейсе:
+13\. Запускаем suricata на выбранном интерфейсе:
 
 ```shell script
 sudo suricata -c /etc/suricata/suricata.yaml -i enp0s8
 ```
 
-7\. В другой консоли запускаете просмотр лога:
+14\. В другой консоли запускаете просмотр лога:
 
 ```shell script
 sudo tail -f /var/log/suricata/fast.log
