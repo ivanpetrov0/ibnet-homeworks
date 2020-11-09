@@ -53,10 +53,28 @@ sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun
 ```
 Где, 10.1.0.1 - это локальный VPN endpoint, 10.1.0.2 - удалённый VPN endpoint
 
+<details>
+<summary>Если всё на одной машине</summary>
+
+```shell script
+sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun --lport 9999
+```
+</details>
+
 Kali
 ```shell script
 sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1
 ```
+
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --rport 9999
+```
+</details>
+
+
 В данном случае адреса меняются местами и мы указываем к какому адресу нужно подключиться (режим P2P).
 
 Откройте в Kali Wireshark и выберите интерфейс `eth1`.
@@ -70,6 +88,14 @@ Ubuntu (прослушиваем порт 3000):
 nc -l 3000
 ```
 
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+nc -l -p 3000 10.1.0.1
+```
+</details>
+
 Kali (подключаемся через туннель к порту 3000 сервера):
 ```shell script
 nc 10.1.0.1 3000
@@ -77,7 +103,15 @@ nc 10.1.0.1 3000
 Передаём любой текст, он будет отображаться на сервере в консоли
 ```
 
-Удостоверьтесь в Wireshark, что данные передаются в открытом виде (`Follow UDP Stream`).
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+nc 10.1.0.1 3000
+```
+</details>
+
+Удостоверьтесь в Wireshark, что данные передаются в открытом виде (`Follow UDP Stream`, если на одной машине - `Follow TCP Stream`).
 
 Завершите работу `openvpn` на сервере и на клиенте (Ctrl + C).
 
@@ -105,7 +139,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 -----END OpenVPN Static key V1-----
 ```
 
-Теперь нам необходимо безопасно передать ключ с сервера на клиент. Проще всего это сделать, воспользовавшись `mc` (файловый менеджер). Запустите его, набрав в терминале `mc`:
+Теперь нам необходимо безопасно передать ключ с сервера на клиент (если вы делаете на разных компьютерах). Проще всего это сделать, воспользовавшись `mc` (файловый менеджер). Запустите его, набрав в терминале `mc`:
 
 ![](pic/mc01.png)
 
@@ -136,15 +170,39 @@ Ubuntu
 sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun --secret vpn.key
 ```
 
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun --secret vpn.key --lport 9999
+```
+</details>
+
 Kali
 ```shell script
 sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --secret vpn.key
 ```
 
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --secret vpn.key --rport 9999
+```
+</details>
+
 Ubuntu (прослушиваем порт 3000):
 ```shell script
 nc -l 3000
 ```
+
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+nc -l -p 3000 10.1.0.1
+```
+</details>
 
 Kali (подключаемся через туннель к порту 3000 сервера):
 ```shell script
@@ -152,6 +210,14 @@ nc 10.1.0.1 3000
 
 Передаём любой текст, он будет отображаться на сервере в консоли
 ```
+
+<details>
+<summary>Если всё на одной машине</summary>
+  
+```shell script
+nc 10.1.0.1 3000
+```
+</details>
 
 Удостоверьтесь в Wireshark, что данные не передаются в открытом виде (`Follow UDP Stream`).
 
@@ -161,7 +227,7 @@ nc 10.1.0.1 3000
 
 2\. Пришлите скриншот Wireshark, где видно, что данные не передаются в открытом виде (для раздела Shared Key)
 
-На сервере или на клиенте запустите команду с флагом `--verb 3`, например, на Kali - `sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --secret vpn.key --verb 3`
+На сервере или на клиенте запустите команду с флагом `--verb 3`, например, на Kali - `sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --secret vpn.key --verb 3` (если на одной машине, то не забудьте добавить `--rport 9999`)
 
 Внимательно изучите вывод и пришлите ответы на следующие вопросы:
 
@@ -175,7 +241,7 @@ nc 10.1.0.1 3000
 
 Указать конкретные с помощью флага `--cipher`, например, `--cipher AES-128-CBC` (или просто `--cipher AES128`) и `--auth`, например, `--auth SHA256`, соответственно (удостоверьтесь, что после указания иных алгоритмов в логе вывод тоже меняется).
 
-6\. Что будет выведено в консоли сервера (`sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun --secret vpn.key --cipher AES128 --auth SHA256 --verb 3`), если:
+6\. Что будет выведено в консоли сервера (`sudo openvpn --ifconfig 10.1.0.1 10.1.0.2 --dev tun --secret vpn.key --cipher AES128 --auth SHA256 --verb 3`, если на одной машине, то не забудьте добавить `--lport 9999`), если:
 
 6\.1\. Подключиться с клиента командой: `sudo openvpn --ifconfig 10.1.0.2 10.1.0.1 --dev tun --remote 10.0.0.1 --secret vpn.key --cipher AES256 --auth SHA256 --verb 3`
 
